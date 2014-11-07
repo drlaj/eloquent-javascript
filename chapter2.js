@@ -47,21 +47,11 @@ function chessboard(n) {
 
   for (var rank = 1; rank <= n; rank++) {
     for (var file = 1; file <= n; file++) {
-      if (rank % 2 == 0) {
-        if (file % 2 == 0) {
-          result += "#";
-        }
-        else {
-          result += " ";
-        }
+      if ((rank + file) % 2 == 0) { 
+        result += "#";
       }
       else {
-        if (file % 2 == 0) {
-          result += " ";
-        }
-        else {
-          result += "#";
-        }
+        result += " ";
       }
     }
     result += "\n";
