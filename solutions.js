@@ -113,3 +113,32 @@ console.log(stringWith5Bs + " contains " + count + " Bs");
 var char = "c";
 count = countChar(stringWith3cs, char);
 console.log(stringWith3cs + " contains " + count + " " + char + "s");
+
+/* 
+  Chapter 4 - Data Structures: Objects and Arrays
+*/
+
+// 4.1 THE SUM OF A RANGE
+function range(start, end) {
+  var array = [];
+
+  for (var i = start; i <= end; i++)
+    array.push(i);
+
+  return array;
+}
+
+function sum(array) {
+  var total = 0;
+
+  for (var i = 0; i < array.length; i++)
+    total += array[i];
+
+  return total;
+}
+
+var array = range(1,10);
+console.log(array);
+
+var total = sum(array);
+console.log(total);
