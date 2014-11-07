@@ -4,7 +4,6 @@
 */
 
 // 2.1 LOOPING A TRIANGLE
-
 function triangle1(n) {
   var line = "",
       i = 1;
@@ -26,7 +25,6 @@ function triangle2(n) {
 triangle2(7);
 
 // 2.2 FIZZBUZZ
-
 function fizzBuzz(n) {
   var i = 1;
 
@@ -42,3 +40,35 @@ function fizzBuzz(n) {
   }
 }
 fizzBuzz(100);
+
+// 2.3 CHESSBOARD
+function chessboard(n) {
+  var result = "";
+
+  for (var rank = 1; rank <= n; rank++) {
+    for (var file = 1; file <= n; file++) {
+      if (rank % 2 == 0) {
+        if (file % 2 == 0) {
+          result += "#";
+        }
+        else {
+          result += " ";
+        }
+      }
+      else {
+        if (file % 2 == 0) {
+          result += " ";
+        }
+        else {
+          result += "#";
+        }
+      }
+    }
+    result += "\n";
+  }
+  return result;
+}
+var board = "";
+board = chessboard(8);
+console.log(board);
+
