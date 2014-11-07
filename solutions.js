@@ -119,11 +119,25 @@ console.log(stringWith3cs + " contains " + count + " " + char + "s");
 */
 
 // 4.1 THE SUM OF A RANGE
-function range(start, end) {
+function range(start, end, step) {
   var array = [];
 
-  for (var i = start; i <= end; i++)
-    array.push(i);
+  if (start === end && typeof(start) == "number" && typeof(end) == "number")
+    return array;
+
+  step = (typeof(step) === "undefined") ? 1 : step;
+
+  if (step == 0) {
+    return array;
+  }
+  else if (step > 0) {
+    for (var i = start; i <= end; i+= step)
+      array.push(i);
+  }
+  else { 
+    for (var i = start; i >= end; i+= step)
+      array.push(i);
+  }
 
   return array;
 }
@@ -137,8 +151,15 @@ function sum(array) {
   return total;
 }
 
-var array = range(1,10);
-console.log(array);
+var array = [];
+var total = 0;
 
-var total = sum(array);
+array = range(1,10);
+total = sum(array);
+console.log(array);
+console.log(total);
+
+array = range(5,2,-1);
+total = sum(array);
+console.log(array);
 console.log(total);
