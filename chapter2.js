@@ -12,5 +12,13 @@ function triangle1(n) {
     console.log(line);
   }
 }
-
 triangle1(7);
+
+function triangle2(n) {
+  var line = "#";
+
+  for (line; line.length <= n; line += "#") {
+    console.log(line);
+  }
+}
+triangle2(7);
