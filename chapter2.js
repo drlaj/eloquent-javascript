@@ -62,3 +62,13 @@ var board = "";
 board = chessboard(8);
 console.log(board);
 
+/*
+  Chapter 3 - Functions
+*/
+
+// 3.1 MINIMUM
+function min(a, b) {
+  return (a <= b ? a : b);
+}
+console.log(min(1,2));
+
