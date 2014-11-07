@@ -89,3 +89,27 @@ console.log(isEven(75));
 console.log(isEven(-1));
 console.log(isEven(-10));
 
+// 3.3 BEAN COUNTING
+function countChar(str, char) {
+  var count = 0;
+
+  for (var i = 0; i < str.length; i++)
+    if (str.charAt(i) == char) 
+      count++;
+
+  return count;
+}
+
+function countBs(str) {
+  return countChar(str, "B");
+}
+
+var stringWith5Bs = "ABCabcABCabcABCabcABCabcABC";
+var stringWith3cs = "abcABCabcABCabcABC";
+
+var count = countBs(stringWith5Bs);
+console.log(stringWith5Bs + " contains " + count + " Bs");
+
+var char = "c";
+count = countChar(stringWith3cs, char);
+console.log(stringWith3cs + " contains " + count + " " + char + "s");
