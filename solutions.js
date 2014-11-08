@@ -237,3 +237,28 @@ function nth(list, n) {
   else
     return nth(list.rest, n - 1)
 }
+
+// 4.4 DEEP COMPARISON
+
+function deepEqual(obj1, obj2) {
+  var obj1Props = 0,
+      obj2Props = 0;
+
+  if (obj1 === obj2)
+    return true;
+
+  if (obj1 == null || obj2 == null || typeof(obj1) != "object" || typeof(obj2) != "object")
+    return false;
+
+  for (var prop in obj1)
+    obj1Props += 1;
+
+  for (var prop in obj2) {
+    obj2Props += 1;
+    if (!(prop in obj1) || !deepEqual(obj1[prop], obj2[prop])) {
+      return false;
+    }
+  }
+
+  return (obj1Props == obj2Props);
+}
