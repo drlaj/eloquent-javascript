@@ -165,7 +165,6 @@ console.log(array);
 console.log(total);
 
 // 4.2 REVERSING AN ARRAY
-
 function reverseArray(array) {
   var result = [],
       lastIdx = array.length - 1,
@@ -200,3 +199,41 @@ console.log(result);
 console.log(array);
 result = reverseArrayInPlace(array);
 console.log(result);
+
+// 4.3 A LIST
+function arrayToList(array) {
+  var list = null,
+      lastIdx = array.length - 1;
+  
+  for (var i = lastIdx; i >= 0; i--)
+    list = { value: array[i], rest: list };
+
+  return list;
+}
+
+function listToArray(list) {
+  var array = [];
+
+  for (var node = list; node != null; node = node.rest) {
+    array.push(node.value);
+  }
+
+  return array;
+}
+
+function prepend(element, list) {
+  var result = {};
+
+  result = { value: element, rest: list };
+
+  return result;
+}
+
+function nth(list, n) {
+  if (!list)
+    return undefined;
+  else if (n == 0)
+    return list.value
+  else
+    return nth(list.rest, n - 1)
+}
