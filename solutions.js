@@ -163,3 +163,40 @@ array = range(5,2,-1);
 total = sum(array);
 console.log(array);
 console.log(total);
+
+// 4.2 REVERSING AN ARRAY
+
+function reverseArray(array) {
+  var result = [],
+      lastIdx = array.length - 1,
+      i;
+
+  for (i = lastIdx; i >= 0; i--)
+    result.push(array[i]);
+
+  return result;
+}
+
+function reverseArrayInPlace(array) {
+  var steps = Math.floor(array.length / 2),
+      lastIdx = array.length - 1,
+      i,
+      tmp;
+
+  for (i = 0; i < steps; i++) {
+    tmp = array[i];
+    array[i] = array[lastIdx - i];
+    array[lastIdx - i] = tmp;
+  }
+  return array;
+}
+
+array = range(1,20);
+
+console.log(array);
+result = reverseArray(array);
+console.log(result);
+
+console.log(array);
+result = reverseArrayInPlace(array);
+console.log(result);
