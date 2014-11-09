@@ -239,7 +239,6 @@ function nth(list, n) {
 }
 
 // 4.4 DEEP COMPARISON
-
 function deepEqual(obj1, obj2) {
   var obj1Props = 0,
       obj2Props = 0;
@@ -262,3 +261,16 @@ function deepEqual(obj1, obj2) {
 
   return (obj1Props == obj2Props);
 }
+
+/*
+  Chapter 5 - Higher-order Functions
+*/
+
+// 5.1 FLATTENING
+var nestedArrays = [[1,2,3],[4,5,6,7],[8,9,10]];
+var result = [];
+result = nestedArrays.reduce(function(collapsed, current) {
+  return collapsed.concat(current);
+}, []);
+
+console.log(result);
