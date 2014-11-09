@@ -369,3 +369,30 @@ for (var century in groupedByCentury) {
   console.log(century + ": " + Math.floor(average(centuryAges)));
 }
 
+// 5.4 EVERY AND THEN SOME
+function every(array, predicate) {
+  var length = array.length; 
+
+  for (var i = 0; i < length; i++){
+    if (!predicate(array[i])){
+      return false;
+    }
+  }
+  return true;
+}
+
+function some(array, predicate) { 
+  var length = array.length;
+
+  for (var i = 0; i < length; i++){
+    if (predicate(array[i])){
+      return true;
+    }
+  }
+  return false;
+}
+
+console.log(every([NaN, NaN, NaN], isNaN));
+console.log(every([NaN, NaN, 4], isNaN));
+console.log(some([NaN, 3, 4], isNaN));
+console.log(some([2, 3, 4], isNaN));
