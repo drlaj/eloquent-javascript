@@ -340,3 +340,32 @@ var ageDifferences = peopleWithMothers.map(function(person) {
 
 var averageAgeDifferences = average(ageDifferences);
 console.log(Math.floor(averageAgeDifferences));
+
+// 5.3 HISTORICAL LIFE EXPECTANCY
+function groupBy(array, fn) {
+  var groupMembers = [];
+  array.forEach(function(el) {
+    var group = fn(el);
+    if (group in groupMembers){
+      groupMembers[group].push(el);
+    }
+    else { 
+      groupMembers[group] = [el];
+    }
+  });
+  return groupMembers;
+}
+
+function determineCentury (person) {
+  return Math.ceil(person.died / 100);
+}
+
+var groupedByCentury = groupBy(ancestry, determineCentury);
+
+for (var century in groupedByCentury) {
+  var centuryAges =  groupedByCentury[century].map(function(person) {
+    return person.died - person.born;
+  });
+  console.log(century + ": " + Math.floor(average(centuryAges)));
+}
+
