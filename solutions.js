@@ -425,3 +425,22 @@ console.log(new Vector(1,2).plus(new Vector(2,3)));
 console.log(new Vector(1,2).minus(new Vector(2,3)));
 console.log(new Vector(3,4).length);
 
+// 6.2 ANOTHER CELL
+function StretchCell(inner, width, height) {
+  this.inner = inner;
+  this.width = width;
+  this.height = height;
+}
+
+StretchCell.prototype.minWidth = function() {
+  return Math.max(this.width, this.inner.minWidth());
+}
+
+StretchCell.prototype.minHeight = function() {
+  return Math.max(this.height, this.inner.minHeight());
+}
+
+StretchCell.prototype.draw = function(width, height) {
+  return this.inner.draw(width, height);
+}
+
