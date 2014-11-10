@@ -396,3 +396,32 @@ console.log(every([NaN, NaN, NaN], isNaN));
 console.log(every([NaN, NaN, 4], isNaN));
 console.log(some([NaN, 3, 4], isNaN));
 console.log(some([2, 3, 4], isNaN));
+
+/*
+  Chapter 6 - The Secret Life of Objects
+*/
+
+// 6.1 A VECTOR TYPE
+function Vector(x, y) {
+  this.x = x;
+  this.y = y;
+}
+
+Vector.prototype.plus = function(v) {
+  return new Vector(this.x + v.x, this.y + v.y);
+};
+
+Vector.prototype.minus = function(v) {
+  return new Vector(this.x - v.x, this.y - v.y);
+};
+
+Object.defineProperty(Vector.prototype, 'length', {
+  get: function() {
+    return Math.sqrt(this.x * this.x + this.y * this.y);
+  }
+});
+
+console.log(new Vector(1,2).plus(new Vector(2,3)));
+console.log(new Vector(1,2).minus(new Vector(2,3)));
+console.log(new Vector(3,4).length);
+
