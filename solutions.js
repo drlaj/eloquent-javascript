@@ -445,6 +445,15 @@ StretchCell.prototype.draw = function(width, height) {
 }
 
 // 6.3 SEQUENCE INTERFACE
+function logFive(sequence) {
+  for (var i = 0; i < 5; i++) {
+    if (!sequence.next())
+      break;
+    console.log(sequence.current());
+  }
+}
+
+// ArraySeq
 function ArraySeq(array) {
   this.array = array;
   this.currentPosition = -1;
@@ -460,11 +469,20 @@ ArraySeq.prototype.current = function() {
   return this.array[this.currentPosition];
 }
 
-function logFive(sequence) {
-  for (var i = 0; i < 5; i++) {
-    if (!sequence.next())
-      break;
-    console.log(sequence.current());
+// RangeSeq
+function RangeSeq(from, to) {
+  this.currentPosition = from - 1;
+  this.to = to;
+}
+RangeSeq.prototype.next = function() {
+  if (this.currentPosition >= this.to) {
+    return false;
   }
+  this.currentPosition += 1;
+  return true;
+}
+RangeSeq.prototype.current = function() {
+  return this.currentPosition;
 }
 logFive(new ArraySeq([4, 2, 1]));
+logFive(new RangeSeq(100, 1000));
