@@ -444,3 +444,27 @@ StretchCell.prototype.draw = function(width, height) {
   return this.inner.draw(width, height);
 }
 
+// 6.3 SEQUENCE INTERFACE
+function ArraySeq(array) {
+  this.array = array;
+  this.currentPosition = -1;
+}
+ArraySeq.prototype.next = function() {
+  if (this.currentPosition >= this.array.length - 1){
+    return false;        
+  }
+  this.currentPosition += 1;
+  return true;
+}
+ArraySeq.prototype.current = function() {
+  return this.array[this.currentPosition];
+}
+
+function logFive(sequence) {
+  for (var i = 0; i < 5; i++) {
+    if (!sequence.next())
+      break;
+    console.log(sequence.current());
+  }
+}
+logFive(new ArraySeq([4, 2, 1]));
